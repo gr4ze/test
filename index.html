@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wearable Health Monitors - Canva Style</title>
+    <title>Wearable Health Monitors - Group Research</title>
     <style>
         * {
             margin: 0;
@@ -86,6 +86,24 @@
             font-weight: 700;
         }
         
+        .definition-section {
+            background: #f8f9ff;
+            padding: 40px 30px;
+        }
+        
+        .definition-text {
+            font-size: 1.2em;
+            line-height: 1.8;
+            color: #2d3436;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        
         .types-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -112,18 +130,27 @@
             background: linear-gradient(135deg, #ff6b6b, #ff8e53);
         }
         
-        .type-card.fitness {
+        .type-card.bp-monitor {
             background: linear-gradient(135deg, #4ecdc4, #44a08d);
         }
         
-        .type-card.ring {
+        .type-card.glucose {
             background: linear-gradient(135deg, #a8edea, #fed6e3);
             color: #2d3436;
         }
         
-        .type-card.patch {
+        .type-card.ring {
             background: linear-gradient(135deg, #ffecd2, #fcb69f);
             color: #2d3436;
+        }
+        
+        .type-card.thermometer {
+            background: linear-gradient(135deg, #ff9a9e, #fecfef);
+            color: #2d3436;
+        }
+        
+        .type-card.ecg {
+            background: linear-gradient(135deg, #667eea, #764ba2);
         }
         
         .device-icon {
@@ -139,19 +166,19 @@
         
         .metrics-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
             margin-top: 30px;
         }
         
         .metric-card {
             background: white;
-            padding: 25px;
+            padding: 20px;
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.08);
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
             transition: transform 0.3s ease;
         }
         
@@ -160,33 +187,29 @@
         }
         
         .metric-icon {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8em;
+            font-size: 1.5em;
             color: white;
             flex-shrink: 0;
         }
         
         .heart { background: linear-gradient(135deg, #ff6b6b, #ff8e53); }
-        .steps { background: linear-gradient(135deg, #4ecdc4, #44a08d); }
-        .sleep { background: linear-gradient(135deg, #a8edea, #fed6e3); }
-        .oxygen { background: linear-gradient(135deg, #667eea, #764ba2); }
-        .stress { background: linear-gradient(135deg, #ffecd2, #fcb69f); }
+        .bp { background: linear-gradient(135deg, #4ecdc4, #44a08d); }
+        .temp { background: linear-gradient(135deg, #a8edea, #fed6e3); }
+        .sleep { background: linear-gradient(135deg, #667eea, #764ba2); }
+        .calories { background: linear-gradient(135deg, #ff9a9e, #fecfef); }
+        .respiratory { background: linear-gradient(135deg, #ffecd2, #fcb69f); }
         
         .metric-text h3 {
             color: #2d3436;
-            font-size: 1.2em;
-            margin-bottom: 5px;
+            font-size: 1.1em;
+            margin-bottom: 3px;
             font-weight: 600;
-        }
-        
-        .metric-text p {
-            color: #636e72;
-            font-size: 0.9em;
         }
         
         .benefits-section {
@@ -197,62 +220,41 @@
         
         .benefits-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 25px;
             margin-top: 30px;
         }
         
         .benefit-item {
-            text-align: center;
-            padding: 30px 20px;
+            padding: 25px 20px;
             background: rgba(255,255,255,0.1);
             border-radius: 15px;
             backdrop-filter: blur(10px);
         }
         
         .benefit-icon {
-            width: 80px;
-            height: 80px;
+            width: 60px;
+            height: 60px;
             background: rgba(255,255,255,0.2);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2em;
-            margin: 0 auto 20px;
+            font-size: 1.8em;
+            margin: 0 auto 15px;
         }
         
         .benefit-item h3 {
-            font-size: 1.3em;
+            font-size: 1.2em;
             margin-bottom: 10px;
             font-weight: 600;
-        }
-        
-        .brands-section {
-            padding: 40px 30px;
             text-align: center;
         }
         
-        .brands-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            justify-content: center;
-            margin-top: 30px;
-        }
-        
-        .brand-tag {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 25px;
-            font-weight: 600;
-            font-size: 1em;
-            transition: transform 0.3s ease;
-        }
-        
-        .brand-tag:hover {
-            transform: scale(1.05);
+        .benefit-item p {
+            font-size: 0.95em;
+            line-height: 1.5;
+            text-align: center;
         }
         
         .stats-section {
@@ -263,33 +265,61 @@
         }
         
         .stats-container {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
             margin-top: 30px;
         }
         
         .stat-item {
             text-align: center;
-            padding: 20px;
+            padding: 25px 20px;
             background: rgba(255,255,255,0.1);
             border-radius: 15px;
             backdrop-filter: blur(10px);
-            min-width: 150px;
         }
         
         .stat-number {
-            font-size: 2.5em;
+            font-size: 2.2em;
             font-weight: 800;
             display: block;
             margin-bottom: 10px;
         }
         
         .stat-label {
-            font-size: 1em;
+            font-size: 1.1em;
             opacity: 0.9;
             font-weight: 300;
+        }
+        
+        .sources-section {
+            background: #f8f9ff;
+            padding: 40px 30px;
+        }
+        
+        .sources-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+        
+        .sources-list li {
+            background: white;
+            margin: 10px 0;
+            padding: 15px 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+        
+        .sources-list a {
+            color: #667eea;
+            text-decoration: none;
+            word-break: break-all;
+        }
+        
+        .sources-list a:hover {
+            text-decoration: underline;
         }
         
         @media (max-width: 600px) {
@@ -306,10 +336,6 @@
             .benefits-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .stats-container {
-                flex-direction: column;
-            }
         }
     </style>
 </head>
@@ -317,75 +343,118 @@
     <div class="infographic">
         <!-- Header -->
         <div class="header">
-            <h1>Wearable Health Monitors</h1>
+            <h1>Wearable Healthcare Monitors</h1>
             <div class="watch-icon">⌚</div>
-            <p class="subtitle">Your Personal Health Assistant</p>
+            <p class="subtitle">Track Your Health Anytime, Anywhere</p>
+        </div>
+        
+        <!-- Definition Section -->
+        <div class="definition-section">
+            <h2 class="section-title">What Are Wearable Healthcare Monitors?</h2>
+            <div class="definition-text">
+                Electronic devices that are designed to be worn on the body that continuously track and record different health-related data and vital signs.
+            </div>
         </div>
         
         <!-- Types Section -->
         <div class="section">
-            <h2 class="section-title">Types of Devices</h2>
+            <h2 class="section-title">Types of Wearable Healthcare Monitors</h2>
             <div class="types-container">
                 <div class="type-card smartwatch">
                     <span class="device-icon">⌚</span>
                     <h3>Smartwatches</h3>
-                    <p>Full-featured with apps</p>
                 </div>
-                <div class="type-card fitness">
-                    <span class="device-icon">📱</span>
-                    <h3>Fitness Bands</h3>
-                    <p>Activity focused tracking</p>
+                <div class="type-card bp-monitor">
+                    <span class="device-icon">🩺</span>
+                    <h3>Blood Pressure Monitors</h3>
+                </div>
+                <div class="type-card glucose">
+                    <span class="device-icon">🩸</span>
+                    <h3>Glucose Meters</h3>
                 </div>
                 <div class="type-card ring">
                     <span class="device-icon">💍</span>
-                    <h3>Smart Rings</h3>
-                    <p>Discreet monitoring</p>
+                    <h3>Wearable Rings</h3>
                 </div>
-                <div class="type-card patch">
-                    <span class="device-icon">🏥</span>
-                    <h3>Medical Patches</h3>
-                    <p>Clinical grade tracking</p>
+                <div class="type-card thermometer">
+                    <span class="device-icon">🌡️</span>
+                    <h3>Thermometers</h3>
+                </div>
+                <div class="type-card ecg">
+                    <span class="device-icon">📈</span>
+                    <h3>ECG Monitors</h3>
                 </div>
             </div>
         </div>
         
         <!-- Metrics Section -->
         <div class="metrics-section">
-            <h2 class="section-title">What They Monitor</h2>
+            <h2 class="section-title">Key Health Metrics Tracked</h2>
             <div class="metrics-grid">
                 <div class="metric-card">
                     <div class="metric-icon heart">❤️</div>
                     <div class="metric-text">
                         <h3>Heart Rate</h3>
-                        <p>Real-time pulse monitoring</p>
                     </div>
                 </div>
                 <div class="metric-card">
-                    <div class="metric-icon steps">👣</div>
+                    <div class="metric-icon bp">🩺</div>
                     <div class="metric-text">
-                        <h3>Steps & Activity</h3>
-                        <p>Daily movement tracking</p>
+                        <h3>Blood Pressure</h3>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon temp">🌡️</div>
+                    <div class="metric-text">
+                        <h3>Body Temperature</h3>
                     </div>
                 </div>
                 <div class="metric-card">
                     <div class="metric-icon sleep">😴</div>
                     <div class="metric-text">
-                        <h3>Sleep Quality</h3>
-                        <p>Sleep stages analysis</p>
+                        <h3>Sleep Cycle</h3>
                     </div>
                 </div>
                 <div class="metric-card">
-                    <div class="metric-icon oxygen">🩸</div>
+                    <div class="metric-icon calories">🔥</div>
                     <div class="metric-text">
-                        <h3>Blood Oxygen</h3>
-                        <p>SpO2 level monitoring</p>
+                        <h3>Calories Burned</h3>
                     </div>
                 </div>
                 <div class="metric-card">
-                    <div class="metric-icon stress">⚡</div>
+                    <div class="metric-icon respiratory">🫁</div>
                     <div class="metric-text">
-                        <h3>Stress Levels</h3>
-                        <p>HRV-based stress tracking</p>
+                        <h3>Respiratory Rate</h3>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon heart">👣</div>
+                    <div class="metric-text">
+                        <h3>Steps Taken</h3>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon bp">💧</div>
+                    <div class="metric-text">
+                        <h3>Hydration Levels</h3>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon temp">🩸</div>
+                    <div class="metric-text">
+                        <h3>Menstrual Cycle</h3>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon calories">⚡</div>
+                    <div class="metric-text">
+                        <h3>Activity Intensity</h3>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon respiratory">🚨</div>
+                    <div class="metric-text">
+                        <h3>Fall Detection</h3>
                     </div>
                 </div>
             </div>
@@ -393,50 +462,74 @@
         
         <!-- Benefits Section -->
         <div class="benefits-section">
-            <h2 class="section-title">Key Benefits</h2>
+            <h2 class="section-title">Benefits of Wearable Healthcare Monitors</h2>
             <div class="benefits-grid">
                 <div class="benefit-item">
                     <div class="benefit-icon">🎯</div>
-                    <h3>Early Detection</h3>
-                    <p>Spot health issues before they become serious</p>
-                </div>
-                <div class="benefit-item">
-                    <div class="benefit-icon">📈</div>
                     <h3>Stay Motivated</h3>
                     <p>Track progress and reach fitness goals</p>
                 </div>
                 <div class="benefit-item">
-                    <div class="benefit-icon">👩‍⚕️</div>
-                    <h3>Remote Care</h3>
-                    <p>Healthcare providers can monitor remotely</p>
+                    <div class="benefit-icon">🚨</div>
+                    <h3>Early Detection</h3>
+                    <p>Detect health issues before they become serious</p>
                 </div>
                 <div class="benefit-item">
-                    <div class="benefit-icon">⏰</div>
-                    <h3>24/7 Monitoring</h3>
-                    <p>Continuous health tracking without effort</p>
+                    <div class="benefit-icon">😴</div>
+                    <h3>Sleep Monitoring</h3>
+                    <p>Monitor your sleep cycle for better rest</p>
                 </div>
-            </div>
-        </div>
-        
-        <!-- Brands Section -->
-        <div class="brands-section">
-            <h2 class="section-title">Popular Brands</h2>
-            <div class="brands-grid">
-                <div class="brand-tag">Apple Watch</div>
-                <div class="brand-tag">Fitbit</div>
-                <div class="brand-tag">Samsung Galaxy Watch</div>
-                <div class="brand-tag">Garmin</div>
-                <div class="brand-tag">Oura Ring</div>
-                <div class="brand-tag">WHOOP</div>
-                <div class="brand-tag">Amazfit</div>
-                <div class="brand-tag">Huawei Watch</div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>Instant Alerts</h3>
+                    <p>Get alerts for abnormal readings instantly</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">💊</div>
+                    <h3>Medication Reminders</h3>
+                    <p>Never miss your medication schedule</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">🆘</div>
+                    <h3>Emergency Detection</h3>
+                    <p>Detect falls or irregular heartbeats</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">🧠</div>
+                    <h3>Mental Health</h3>
+                    <p>Monitor stress and mental wellness</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">🏃‍♂️</div>
+                    <h3>Athletic Performance</h3>
+                    <p>Help athletes optimize training</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">📱</div>
+                    <h3>App Integration</h3>
+                    <p>Connect with health apps for complete profile</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">👩‍⚕️</div>
+                    <h3>Doctor Visits</h3>
+                    <p>Easy to share health data with doctors</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">📊</div>
+                    <h3>Health Awareness</h3>
+                    <p>Understand how daily habits impact health</p>
+                </div>
             </div>
         </div>
         
         <!-- Stats Section -->
         <div class="stats-section">
-            <h2 class="section-title">Market Impact</h2>
+            <h2 class="section-title">Interesting Data & Statistics</h2>
             <div class="stats-container">
+                <div class="stat-item">
+                    <span class="stat-number">30%+</span>
+                    <div class="stat-label">Of adults use wearable health devices</div>
+                </div>
                 <div class="stat-item">
                     <span class="stat-number">560M</span>
                     <div class="stat-label">Global Users 2024</div>
@@ -450,6 +543,23 @@
                     <div class="stat-label">Market Value 2029</div>
                 </div>
             </div>
+        </div>
+        
+        <!-- Sources Section -->
+        <div class="sources-section">
+            <h2 class="section-title">Sources & References</h2>
+            <ul class="sources-list">
+                <li><strong>Definition:</strong><br>
+                    <a href="https://vantagemedtech.com/wearable-health-monitoring-devices">https://vantagemedtech.com/wearable-health-monitoring-devices</a><br>
+                    <a href="https://kms-healthcare.com/blog/wearable-technology-in-healthcare">https://kms-healthcare.com/blog/wearable-technology-in-healthcare</a>
+                </li>
+                <li><strong>Health Metrics Tracked:</strong><br>
+                    <a href="https://www.massgeneral.org/news/article/personal-wearable-health-devices">https://www.massgeneral.org/news/article/personal-wearable-health-devices</a>
+                </li>
+                <li><strong>Benefits:</strong><br>
+                    <a href="https://www.ominext.com/en/blog/wearable-devices-in-healthcare-benefits-and-drawbacks">https://www.ominext.com/en/blog/wearable-devices-in-healthcare-benefits-and-drawbacks</a>
+                </li>
+            </ul>
         </div>
     </div>
 </body>
